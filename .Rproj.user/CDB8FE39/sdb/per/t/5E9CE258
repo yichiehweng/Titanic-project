@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1502265669031.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "5E9CE258",
+    "lastKnownWriteTime" : 29555345007378548,
+    "last_content_update" : 1502265669031,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "91FA612B",
+        "caption" : "submission_steplogistic",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=submission_steplogistic&cache_key=91FA612B",
+        "displayedObservations" : 418,
+        "environment" : "",
+        "object" : "submission_steplogistic",
+        "preview" : 0,
+        "totalObservations" : 418,
+        "variables" : 2
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

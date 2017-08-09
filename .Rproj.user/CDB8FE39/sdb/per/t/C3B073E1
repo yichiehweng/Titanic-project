@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#input dataset\ntrain <- read_csv(\"C:/Kaggle/Titanic/Titanic/Data/train.csv\")\ntest <- read_csv(\"C:/Kaggle/Titanic/Titanic/Data/test.csv\")\n#pretreat of dataset\ntrain$pclass <-factor(train$pclass,levels = c(3, 2, 1), ordered = TRUE)\ntest$pclass <-factor(test$pclass,levels = c(3, 2, 1), ordered = TRUE)\ntrain$Gender <- ifelse(train$Sex == \"male\",1,0)\ntest$Gender <- ifelse(test$Sex == \"male\",1,0)\ntrain$Age[is.na(train$Age)] <- mean(train$Age, na.rm = TRUE)\ntest$Age[is.na(test$Age)] <- mean(test$Age, na.rm = TRUE)\ntrain$Embarked_C = ifelse(train$Embarked == \"C\", 1, 0)\ntrain$Embarked_Q = ifelse(train$Embarked == \"Q\", 1, 0)\ntest$Embarked_C = ifelse(test$Embarked == \"C\", 1, 0)\ntest$Embarked_Q = ifelse(test$Embarked == \"Q\", 1, 0)\n#predicted model\nlogistic.model<- glm(Survived~Pclass+Gender+Age+SibSp+Parch+Fare+Embarked_C+Embarked_Q,data=train,family =binomial)\nsummary(logistic.model)\nstep.model<-step(logistic.model)\nlogistic_MSE = mean(logistic.model$residuals^2)\nstep_MSE = mean(step.model$residuals^2)\n#prediction\ntest_predictions = predict(step.model, test, type = \"response\")\ntest$predictions<-predict(step.model,newdata = test,type = \"response\")\ntest$survival = ifelse(test$predictions > 0.5, 1, 0)\n#Creating CSV for Kaggle Submission\nsubmission <- cbind(test$PassengerId, test$survival)\ncolnames(submission) <- c(\"PassengerId\", \"Survived\")\nwrite.csv(submission, file = \"C:/Kaggle/Titanic/Titanic/Submission/submission_steplogistic.csv\",row.names = FALSE)\n \n\n\n\n\n",
+    "created" : 1502252842531.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4294433881",
+    "id" : "C3B073E1",
+    "lastKnownWriteTime" : 1502265585,
+    "last_content_update" : 1502265585270,
+    "path" : "C:/Kaggle/Titanic/Titanic/Code/Code.R",
+    "project_path" : "Code/Code.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
